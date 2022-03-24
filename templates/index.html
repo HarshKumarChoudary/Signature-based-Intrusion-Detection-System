@@ -16,6 +16,23 @@
         >
         <title>Hello, world!</title>
         <style>
+            .loader {
+                display: none;
+                border-top: 16px solid blue;
+                border-right: 16px solid green;
+                border-bottom: 16px solid red;
+                border-left: 16px solid pink;
+                align-content: center;
+                border-radius: 50%;
+                width: 15px;
+                height: 15px;
+                animation: spin 2s linear infinite;
+            }
+
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
             *{
                 font-family: 'Playfair Display', serif;
             }
@@ -40,13 +57,16 @@
             </div>
             <form method="POST" action="/response">
                 <div class="input-group">
-                    <span class="input-group-text">Enter the URL</span>
+                    <span class="input-group-text">Enter</span>
                     <textarea name="URL" class="form-control" aria-label="With textarea"></textarea>
                 </div>
-                <center id="spin">
+                <center>
+                    <div class=" loader" id="load"></div>
+                </center>
+                <center>
                     <button
+                        id="spin"
                         type="submit"
-                        onclick="myFunction()"
                         style="color:black;"
                         class="btn btn-outline-success"
                     >Confirm</button>
@@ -62,12 +82,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
     </body>
-    <script>
-        
-        myFunction = function(){
-            document.getElementById("spin").innerHTML(
-            "<div class=${spinner-border text-danger} role=${status}><span class=${visually-hidden}>Loading...</span></div>"      
-            )
-        }
+    <script type="text/javascript">
+        const targetDiv = document.getElementById("load");
+        const btn = document.getElementById("spin");
+        btn.onclick = function () {
+                console.log("called")
+                targetDiv.style.display = "block";
+                btn.style.display = "none";
+        };
     </script>
 </html>

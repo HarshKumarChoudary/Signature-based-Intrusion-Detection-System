@@ -34,8 +34,18 @@
                     </center>
                     <br>
                     <center>
-                        Please Enter the Signature based packet information or URL you want to confirm.
+                        <table>
+                            {% for key, val in value.items() %}
+                            <tr>
+                                <th> {{ key }}</th>
+                                <td style="padding : 5px; font-family: Arial, Helvetica, sans-serif;"> {{ val }}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
                     </center>
+                    <!-- <center>
+                        Please Enter the Signature based packet information or URL you want to confirm.
+                    </center> -->
                 </p>
             </div>
         </div>
